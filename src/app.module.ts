@@ -4,11 +4,12 @@ import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
 import { DatabaseModule } from './database/database.module';
-import { EmployeesModule } from './employees/employees.module';
+import { UsersModule } from './users/users.module';
+import { EnhancementsModule } from './enhancements/enhancements.module';
 
 import { environments } from './environment';
-import { EnhancementsModule } from './enhancements/enhancements.module';
 import config from './config';
 
 @Module({
@@ -29,7 +30,7 @@ import config from './config';
       }),
     }),
     DatabaseModule,
-    EmployeesModule,
+    UsersModule,
     EnhancementsModule,
   ],
   controllers: [AppController],

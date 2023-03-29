@@ -1,4 +1,4 @@
-import { Employee } from 'src/employees/entities/employee.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Column,
   Entity,
@@ -11,6 +11,10 @@ import {
 export class Enhancement {
   @PrimaryGeneratedColumn('uuid')
   id: number;
+
+  @ManyToOne(() => User, (user) => user.enhancement)
+  @JoinColumn({ name: 'user_id' })
+  user: User[];
 
   @Column({ type: 'varchar', length: 255, default: null })
   title: string;
@@ -98,8 +102,4 @@ export class Enhancement {
     default: null,
   })
   enhancementExpectation: string;
-
-  @ManyToOne(() => Employee, (employee) => employee.enhancement)
-  @JoinColumn({ name: 'employee_id' })
-  employee: Employee[];
 }
