@@ -27,32 +27,8 @@ import { FilterUsersDto } from '../dto/filter-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // @Post()
-  // create(@Body() createUserDto: CreateUserDto) {
-  //   return this.usersService.create(createUserDto);
-  // }
-
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
-
-  @Roles(Role.ADMIN)
+  // @Roles(Role.ADMIN)
+  @Public()
   @Post()
   create(@Body() createUser: CreateUserDto) {
     return this.usersService.create(createUser).catch((e) => {

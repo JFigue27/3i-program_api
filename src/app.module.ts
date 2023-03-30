@@ -5,6 +5,7 @@ import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { EnhancementsModule } from './enhancements/enhancements.module';
@@ -14,6 +15,7 @@ import config from './config';
 
 @Module({
   imports: [
+    UsersModule,
     ConfigModule.forRoot({
       envFilePath: environments[process.env.NODE_ENV] || '.env',
       load: [config],
@@ -29,9 +31,9 @@ import config from './config';
         DB_PASSWORD: Joi.string().required(),
       }),
     }),
-    DatabaseModule,
-    UsersModule,
     EnhancementsModule,
+    DatabaseModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

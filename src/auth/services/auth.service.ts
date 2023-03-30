@@ -26,7 +26,7 @@ export class AuthService {
     // console.log(user);
 
     const payload: PayloadToken = {
-      role: user.role.toLowerCase(),
+      role: user.role?.toLowerCase(),
       sub: user.id,
     };
     // console.log(payload);
